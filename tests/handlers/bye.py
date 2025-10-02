@@ -3,6 +3,7 @@ from venantvr.telegram.handler import TelegramHandler
 
 
 class ByeHandler(TelegramHandler):
+
     @command(name="/menu", description="Afficher le menu d'aide", menu="/menu")
     def menu(self) -> dict:
         text_response = "Voici les commandes disponibles à taper :\n"

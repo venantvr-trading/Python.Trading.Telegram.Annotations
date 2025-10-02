@@ -118,6 +118,7 @@ class TestHandlerIntegration(unittest.TestCase):
         """Test qu'un handler personnalisé peut hériter de TelegramHandler."""
 
         class CustomHandler(TelegramHandler):
+
             @staticmethod
             def custom_command(name: str) -> dict:
                 return {"text": f"Custom: {name}"}
