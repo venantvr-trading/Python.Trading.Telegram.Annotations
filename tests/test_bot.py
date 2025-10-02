@@ -4,8 +4,8 @@ import queue
 import unittest
 from unittest.mock import Mock, patch
 
-from venantvr.telegram.bot import TelegramBot
-from venantvr.telegram.handler import TelegramHandler
+from python_trading_telegram_annotations.bot import TelegramBot
+from python_trading_telegram_annotations.handler import TelegramHandler
 
 
 class TestTelegramBot(unittest.TestCase):
@@ -17,7 +17,7 @@ class TestTelegramBot(unittest.TestCase):
         self.chat_id = "123456789"
         self.handler = Mock(spec=TelegramHandler)
 
-    @patch("venantvr.telegram.bot.threading.Thread")
+    @patch("python_trading_telegram_annotations.bot.threading.Thread")
     def test_bot_initialization(self, _mock_thread):
         """Test l'initialisation correcte du bot."""
         bot = TelegramBot(self.bot_token, self.chat_id, self.handler)  # type: ignore[arg-type]
@@ -31,7 +31,7 @@ class TestTelegramBot(unittest.TestCase):
 
     def test_single_handler_conversion(self):
         """Test que un handler unique est converti en liste."""
-        with patch("venantvr.telegram.bot.threading.Thread"):
+        with patch("python_trading_telegram_annotations.bot.threading.Thread"):
             bot = TelegramBot(self.bot_token, self.chat_id, self.handler)  # type: ignore[arg-type]
             self.assertIsInstance(bot.handlers, list)
             self.assertEqual(len(bot.handlers), 1)
@@ -39,34 +39,34 @@ class TestTelegramBot(unittest.TestCase):
     def test_multiple_handlers(self):
         """Test avec plusieurs handlers."""
         handler2 = Mock(spec=TelegramHandler)
-        with patch("venantvr.telegram.bot.threading.Thread"):
+        with patch("python_trading_telegram_annotations.bot.threading.Thread"):
             bot = TelegramBot(self.bot_token, self.chat_id, [self.handler, handler2])  # type: ignore[arg-type]
             self.assertEqual(len(bot.handlers), 2)
 
-    @patch("venantvr.telegram.bot.requests.Session")
+    @patch("python_trading_telegram_annotations.bot.requests.Session")
     def test_session_creation(self, mock_session):
         """Test la création de la session HTTP avec retry."""
-        with patch("venantvr.telegram.bot.threading.Thread"):
+        with patch("python_trading_telegram_annotations.bot.threading.Thread"):
             TelegramBot(self.bot_token, self.chat_id)
             mock_session.assert_called()
 
     def test_build_menu_keyboard_invalid_menu(self):
         """Test la construction d'un menu avec une valeur invalide."""
-        with patch("venantvr.telegram.bot.threading.Thread"):
+        with patch("python_trading_telegram_annotations.bot.threading.Thread"):
             bot = TelegramBot(self.bot_token, self.chat_id)
-            with patch("venantvr.telegram.classes.menu.Menu.from_value", side_effect=ValueError("Invalid menu")):
+            with patch("python_trading_telegram_annotations.classes.menu.Menu.from_value", side_effect=ValueError("Invalid menu")):
                 result = bot._build_menu_keyboard("invalid_menu")
                 self.assertIn("Erreur", result["text"])
 
-    @patch("venantvr.telegram.bot.COMMAND_REGISTRY")
+    @patch("python_trading_telegram_annotations.bot.COMMAND_REGISTRY")
     def test_build_menu_keyboard_valid(self, mock_registry):
         """Test la construction d'un menu valide."""
         mock_menu = Mock()
         mock_menu.value = "/test_menu"
         mock_registry.values.return_value = [{"menu": mock_menu, "enum": Mock(name="TEST", value="/test")}]
 
-        with patch("venantvr.telegram.bot.threading.Thread"):
-            with patch("venantvr.telegram.classes.menu.Menu.from_value", return_value=mock_menu):
+        with patch("python_trading_telegram_annotations.bot.threading.Thread"):
+            with patch("python_trading_telegram_annotations.classes.menu.Menu.from_value", return_value=mock_menu):
                 bot = TelegramBot(self.bot_token, self.chat_id)
                 result = bot._build_menu_keyboard("/test_menu")
 
@@ -76,7 +76,7 @@ class TestTelegramBot(unittest.TestCase):
 
     def test_send_message_dict(self):
         """Test l'envoi d'un message unique."""
-        with patch("venantvr.telegram.bot.threading.Thread"):
+        with patch("python_trading_telegram_annotations.bot.threading.Thread"):
             bot = TelegramBot(self.bot_token, self.chat_id)
             message = {"text": "Test message", "chat_id": self.chat_id}
             bot.send_message(message)
@@ -87,7 +87,7 @@ class TestTelegramBot(unittest.TestCase):
 
     def test_send_message_list(self):
         """Test l'envoi de plusieurs messages."""
-        with patch("venantvr.telegram.bot.threading.Thread"):
+        with patch("python_trading_telegram_annotations.bot.threading.Thread"):
             bot = TelegramBot(self.bot_token, self.chat_id)
             messages = [{"text": "Message 1", "chat_id": self.chat_id}, {"text": "Message 2", "chat_id": self.chat_id}]
             bot.send_message(messages)
@@ -96,8 +96,8 @@ class TestTelegramBot(unittest.TestCase):
 
     def test_send_message_invalid_type(self):
         """Test l'envoi avec un type invalide."""
-        with patch("venantvr.telegram.bot.threading.Thread"):
-            with patch("venantvr.telegram.bot.logger") as mock_logger:
+        with patch("python_trading_telegram_annotations.bot.threading.Thread"):
+            with patch("python_trading_telegram_annotations.bot.logger") as mock_logger:
                 bot = TelegramBot(self.bot_token, self.chat_id)
                 # Test avec une string au lieu d'un dict/list - type: ignore pour le test
                 bot.send_message("invalid_type")  # type: ignore
@@ -105,7 +105,7 @@ class TestTelegramBot(unittest.TestCase):
 
     def test_stop_bot(self):
         """Test l'arrêt propre du bot."""
-        with patch("venantvr.telegram.bot.threading.Thread"):
+        with patch("python_trading_telegram_annotations.bot.threading.Thread"):
             bot = TelegramBot(self.bot_token, self.chat_id)
             bot._session = Mock()
             bot.stop()

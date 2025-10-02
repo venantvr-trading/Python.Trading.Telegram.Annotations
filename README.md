@@ -47,9 +47,9 @@ LOG_LEVEL=INFO  # Optional: DEBUG, INFO, WARNING, ERROR
 ### Simple Example
 
 ```python
-from venantvr.telegram.bot import TelegramBot
-from venantvr.telegram.handler import TelegramHandler
-from venantvr.telegram.decorators import command
+from python_trading_telegram_annotations.bot import TelegramBot
+from python_trading_telegram_annotations.handler import TelegramHandler
+from python_trading_telegram_annotations.decorators import command
 
 
 # noinspection PyUnresolvedReferences
@@ -127,14 +127,16 @@ make clean       # Clean up generated files
 
 ```
 .
-├── venantvr/
-│   └── telegram/
+├── src/
+│   └── python_trading_telegram_annotations/
+│       ├── __init__.py
 │       ├── bot.py           # Main bot class
 │       ├── handler.py       # Command handler
 │       ├── decorators.py    # Command decorators
 │       ├── config.py        # Configuration and logging
 │       ├── protocols.py     # Protocol definitions
 │       ├── classes/         # Types and enums
+│       │   ├── __init__.py
 │       │   ├── command.py
 │       │   ├── menu.py
 │       │   ├── types.py
@@ -144,12 +146,12 @@ make clean       # Clean up generated files
 ├── tests/                   # Unit tests
 │   ├── test_bot.py
 │   ├── test_handler.py
+│   ├── main.py
 │   └── handlers/           # Handler examples
+│       ├── hello.py
+│       └── bye.py
 ├── pyproject.toml          # Project configuration
 ├── Makefile                # Development commands
-├── requirements.txt        # Production dependencies
-├── requirements-dev.txt    # Development dependencies
-├── setup.py                # Setup configuration
 └── .pre-commit-config.yaml # Pre-commit hooks
 ```
 

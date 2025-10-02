@@ -10,11 +10,11 @@ import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
-from venantvr.telegram.classes.command import Command
-from venantvr.telegram.classes.enums import DynamicEnumMember
-from venantvr.telegram.classes.menu import Menu
-from venantvr.telegram.decorators import COMMAND_REGISTRY
-from venantvr.telegram.protocols import HandlerProtocol
+from python_trading_telegram_annotations.classes.command import Command
+from python_trading_telegram_annotations.classes.enums import DynamicEnumMember
+from python_trading_telegram_annotations.classes.menu import Menu
+from python_trading_telegram_annotations.decorators import COMMAND_REGISTRY
+from python_trading_telegram_annotations.protocols import HandlerProtocol
 
 logger = logging.getLogger(__name__)
 

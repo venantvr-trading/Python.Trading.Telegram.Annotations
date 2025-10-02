@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 from tests.handlers.bye import ByeHandler
 from tests.handlers.hello import HelloHandler
-from venantvr.telegram.bot import TelegramBot
+from python_trading_telegram_annotations.bot import TelegramBot
 
 # Assuming these are correctly defined in your project
 

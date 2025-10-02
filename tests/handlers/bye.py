@@ -1,5 +1,5 @@
-from venantvr.telegram.decorators import COMMAND_REGISTRY, command
-from venantvr.telegram.handler import TelegramHandler
+from python_trading_telegram_annotations.decorators import COMMAND_REGISTRY, command
+from python_trading_telegram_annotations.handler import TelegramHandler
 
 
 class ByeHandler(TelegramHandler):

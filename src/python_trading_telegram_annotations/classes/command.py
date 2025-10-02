@@ -1,4 +1,4 @@
-from venantvr.telegram.classes.enums import DynamicEnum
+from python_trading_telegram_annotations.classes.enums import DynamicEnum
 
 
 class Command(DynamicEnum):

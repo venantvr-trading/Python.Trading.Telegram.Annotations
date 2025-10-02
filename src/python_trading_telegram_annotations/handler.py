@@ -3,9 +3,9 @@
 import logging
 from typing import Any, Dict, List, Optional, Union
 
-from venantvr.telegram.classes.command import Command
-from venantvr.telegram.classes.enums import DynamicEnumMember
-from venantvr.telegram.decorators import COMMAND_REGISTRY, command
+from python_trading_telegram_annotations.classes.command import Command
+from python_trading_telegram_annotations.classes.enums import DynamicEnumMember
+from python_trading_telegram_annotations.decorators import COMMAND_REGISTRY, command
 
 logger = logging.getLogger(__name__)
 

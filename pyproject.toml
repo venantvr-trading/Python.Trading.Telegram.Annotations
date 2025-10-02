@@ -1,14 +1,16 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
+requires = [
+    "setuptools>=61.0",
+    "wheel",
+]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "Python.Trading.Telegram.Annotations"
+name = "python_trading_telegram_annotations"
 version = "0.1.0"
 description = "Une bibliothèque Python pour Telegram avec annotations et gestion de commandes"
 readme = "README.md"
 requires-python = ">=3.8"
-license = { text = "MIT" }
 authors = [
     { name = "venantvr", email = "venantvr@gmail.com" },
 ]
@@ -29,6 +31,9 @@ dependencies = [
     "urllib3>=2.0.0",
 ]
 
+[project.license]
+text = "MIT"
+
 [project.urls]
 Homepage = "https://github.com/venantvr/Python.Trading.Telegram.Annotations"
 Issues = "https://github.com/venantvr/Python.Trading.Telegram.Annotations/issues"
@@ -45,26 +50,34 @@ dev = [
 ]
 
 [tool.setuptools.packages.find]
-where = ["src"]
-include = ["venantvr*"]
+where = [
+    "src",
+]
+include = [
+    "python_trading_telegram_annotations*",
+]
 
 [tool.black]
 line-length = 120
-target-version = ['py38']
+target-version = [
+    "py38",
+]
 
 [tool.ruff]
 line-length = 120
 select = [
-    "E", # pycodestyle errors
-    "W", # pycodestyle warnings
-    "F", # pyflakes
-    "I", # isort
-    "B", # flake8-bugbear
-    "C4", # flake8-comprehensions
-    "UP", # pyupgrade
+    "E",
+    "W",
+    "F",
+    "I",
+    "B",
+    "C4",
+    "UP",
 ]
 ignore = []
-fixable = ["ALL"]
+fixable = [
+    "ALL",
+]
 unfixable = []
 
 [tool.mypy]

@@ -3,8 +3,8 @@
 import unittest
 from unittest.mock import Mock, patch
 
-from venantvr.telegram.classes.command import Command
-from venantvr.telegram.handler import TelegramHandler
+from python_trading_telegram_annotations.classes.command import Command
+from python_trading_telegram_annotations.handler import TelegramHandler
 
 
 class TestTelegramHandler(unittest.TestCase):
@@ -14,7 +14,7 @@ class TestTelegramHandler(unittest.TestCase):
         """Initialisation avant chaque test."""
         self.handler = TelegramHandler()
 
-    @patch("venantvr.telegram.handler.COMMAND_REGISTRY")
+    @patch("python_trading_telegram_annotations.handler.COMMAND_REGISTRY")
     def test_process_command_not_found(self, mock_registry):
         """Test le traitement d'une commande non trouvée."""
         mock_command = Mock(spec=Command)
@@ -26,7 +26,7 @@ class TestTelegramHandler(unittest.TestCase):
         self.assertIn("Erreur", result["text"])
         self.assertIn("non trouvée", result["text"])
 
-    @patch("venantvr.telegram.handler.COMMAND_REGISTRY")
+    @patch("python_trading_telegram_annotations.handler.COMMAND_REGISTRY")
     def test_process_command_wrong_arguments(self, mock_registry):
         """Test avec un nombre incorrect d'arguments."""
         mock_command = Mock(spec=Command)
@@ -38,7 +38,7 @@ class TestTelegramHandler(unittest.TestCase):
         self.assertIn("Erreur", result["text"])
         self.assertIn("incorrect", result["text"])
 
-    @patch("venantvr.telegram.handler.COMMAND_REGISTRY")
+    @patch("python_trading_telegram_annotations.handler.COMMAND_REGISTRY")
     def test_process_command_type_conversion_error(self, mock_registry):
         """Test avec une erreur de conversion de type."""
         mock_command = Mock(spec=Command)
@@ -53,7 +53,7 @@ class TestTelegramHandler(unittest.TestCase):
 
         self.assertIn("invalide", result["text"])
 
-    @patch("venantvr.telegram.handler.COMMAND_REGISTRY")
+    @patch("python_trading_telegram_annotations.handler.COMMAND_REGISTRY")
     def test_process_command_success(self, mock_registry):
         """Test le traitement réussi d'une commande."""
         mock_command = Mock(spec=Command)
@@ -77,7 +77,7 @@ class TestTelegramHandler(unittest.TestCase):
         self.assertIn("reply_markup", result)
         self.assertIn("TelegramHandler", result["text"])
 
-    @patch("venantvr.telegram.handler.COMMAND_REGISTRY")
+    @patch("python_trading_telegram_annotations.handler.COMMAND_REGISTRY")
     def test_help_command(self, mock_registry):
         """Test la commande help."""
         mock_menu1 = Mock()
@@ -99,8 +99,8 @@ class TestTelegramHandler(unittest.TestCase):
         self.assertIn("/menu1", result["text"])
         self.assertNotIn("/menu ", result["text"])  # Exclu car c'est "/menu"
 
-    @patch("venantvr.telegram.handler.COMMAND_REGISTRY")
-    @patch("venantvr.telegram.handler.logger")
+    @patch("python_trading_telegram_annotations.handler.COMMAND_REGISTRY")
+    @patch("python_trading_telegram_annotations.handler.logger")
     def test_help_command_error(self, mock_logger, mock_registry):
         """Test la gestion d'erreur dans la commande help."""
         mock_registry.items.side_effect = Exception("Test error")

@@ -2,8 +2,8 @@ import inspect
 import logging
 from typing import Any, Callable, Dict, List, Optional
 
-from venantvr.telegram.classes.command import Command
-from venantvr.telegram.classes.menu import Menu
+from python_trading_telegram_annotations.classes.command import Command
+from python_trading_telegram_annotations.classes.menu import Menu
 
 logger = logging.getLogger(__name__)
 

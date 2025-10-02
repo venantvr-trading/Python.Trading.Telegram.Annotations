@@ -1,8 +1,8 @@
 from typing import Dict, Callable, Tuple, Union
 from typing import TypedDict
 
-from venantvr.telegram.classes.command import Command
-from venantvr.telegram.classes.enums import DynamicEnumMember
+from python_trading_telegram_annotations.classes.command import Command
+from python_trading_telegram_annotations.classes.enums import DynamicEnumMember
 
 # Définir des types pour les arguments possibles
 ArgumentType = Union[int, str, float]  # Ajoutez d'autres types si nécessaire

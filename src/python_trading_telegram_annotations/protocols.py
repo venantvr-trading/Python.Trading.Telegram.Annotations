@@ -2,8 +2,8 @@
 
 from typing import Any, Dict, List, Optional, Protocol, Union
 
-from venantvr.telegram.classes.command import Command
-from venantvr.telegram.classes.enums import DynamicEnumMember
+from python_trading_telegram_annotations.classes.command import Command
+from python_trading_telegram_annotations.classes.enums import DynamicEnumMember
 
 
 class HandlerProtocol(Protocol):
