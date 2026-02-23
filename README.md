@@ -193,3 +193,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 - **Author**: venantvr
 - **Email**: venantvr@gmail.com
 - **GitHub**: [@venantvr](https://github.com/venantvr)
+
+## Stack
+
+[![Stack](https://skillicons.dev/icons?i=py,git&theme=dark)](https://skillicons.dev)
